@@ -1,0 +1,301 @@
+{
+  "datasets": [
+    {
+      "name": "cdd426ba",
+      "displayName": "patients_data",
+      "queryLines": [
+        "SELECT * FROM jpmc.teju.patients_data"
+      ],
+      "catalog": "jpmc",
+      "schema": "teju"
+    },
+    {
+      "name": "10b95434",
+      "displayName": "marketing_users",
+      "queryLines": [
+        "SELECT * FROM jpmc.teju.marketing_users"
+      ]
+    },
+    {
+      "name": "1b1a5460",
+      "displayName": "sales",
+      "queryLines": [
+        "SELECT * FROM jpmc.teju.sales"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "ef8e574a",
+      "displayName": "Sales Report",
+      "layout": [
+        {
+          "widget": {
+            "name": "5b03c063",
+            "multilineTextboxSpec": {
+              "lines": [
+                "Sales Dashboard"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "69bc0c41",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "1b1a5460",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "expression": "`product_id`"
+                    },
+                    {
+                      "name": "sum(total_amount)",
+                      "expression": "SUM(`total_amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "product_id",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "product_id"
+                },
+                "y": {
+                  "fieldName": "sum(total_amount)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Sum of total_amount"
+                }
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "f6edaeea",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "1b1a5460",
+                  "fields": [
+                    {
+                      "name": "sum(total_amount)",
+                      "expression": "SUM(`total_amount`)"
+                    },
+                    {
+                      "name": "customer_id",
+                      "expression": "`customer_id`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(total_amount)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Sum of total_amount"
+                },
+                "color": {
+                  "fieldName": "customer_id",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "reds"
+                    }
+                  },
+                  "displayName": "customer_id"
+                }
+              },
+              "frame": {
+                "showDescription": true,
+                "description": "Total Amount by customer"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "03a17a40",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "f1ba1326",
+            "queries": [
+              {
+                "name": "dashboards/01f05e19b75b16e09516a4c2c7736715/datasets/01f05e1abdeb10509527dfb53226c59f_customer_id",
+                "query": {
+                  "datasetName": "1b1a5460",
+                  "fields": [
+                    {
+                      "name": "customer_id",
+                      "expression": "`customer_id`"
+                    },
+                    {
+                      "name": "customer_id_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "customer_id",
+                    "displayName": "customer_id",
+                    "queryName": "dashboards/01f05e19b75b16e09516a4c2c7736715/datasets/01f05e1abdeb10509527dfb53226c59f_customer_id"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              },
+              "selection": {
+                "defaultSelection": {
+                  "operator": {
+                    "operator": "AND",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "widgetBorderColor": {
+        "dark": "#35434E"
+      },
+      "fontColor": {
+        "light": "#11171C",
+        "dark": "#788DA3"
+      },
+      "selectionColor": {
+        "light": "#2272B4",
+        "dark": "#8ACAFF"
+      },
+      "visualizationColors": [
+        "#077A9D",
+        "#FFAB00",
+        "#00A972",
+        "#FF3621",
+        "#8BCAE7",
+        "#AB4057",
+        "#99DDB4",
+        "#FCA4A1",
+        "#919191",
+        "#BF7080"
+      ],
+      "widgetHeaderAlignment": "LEFT"
+    }
+  }
+}
